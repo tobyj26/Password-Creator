@@ -44,7 +44,7 @@ for i in range(len(target)):
 
       print(f"    GENERATING...  {guessed_password}", end = "\r" )
 
-      time.sleep(0.01)
+      time.sleep(0.005)
 
       if guessed_password == target[:i + 1]:
          break
