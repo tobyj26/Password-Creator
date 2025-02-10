@@ -44,13 +44,12 @@ for i in range(len(target)):
 
       print(f"    GENERATING...  {guessed_password}", end = "\r" )
 
-      time.sleep(0.0025)
+      time.sleep(0.01)
 
       if guessed_password == target[:i + 1]:
          break
 
-print(f"Successful generation! You password is {guessed_password}")
+print(f"Successful creation! {guessed_password} is your {password_type} password!")
 
-  
   
 
