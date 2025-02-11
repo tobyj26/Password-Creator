@@ -23,10 +23,10 @@ def Alphanumerical():
 
 def PIN():
    amount = int(input("Enter length of pin: "))
-   nums = [str(i) for i in range(amount)]  # Convert to strings
+   nums = [str(i) for i in range(amount)]
    random.shuffle(nums)
 
-   pincode = ''.join(nums[:amount])  # This now works
+   pincode = ''.join(nums[:amount])
 
    return pincode
 
