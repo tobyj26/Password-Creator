@@ -34,7 +34,7 @@ def random():
   chars = string.digits + string.ascii_letters + string.punctuation
 
   for i in range(10):
-    print((chars))
+    
 
   
 
