@@ -3,7 +3,7 @@ import time
 import string
 
 
-def password(password_type):
+def Alphanumerical():
 
     adverb = [
     "quickly", "silently", "eagerly", "gracefully", "carefully", "happily", "angrily", "patiently", "lazily", "naturally", "enthusiastically", "smoothly", "boldly", "brightly", "clearly", "neatly", "reliably", "comfortably", "sharply", "loudly", "abruptly", "calmly", "exactly", "mysteriously", "innocently", "warmly", "precisely", "briskly", "cheerfully", "intentionally", "sweetly", "freely", "generously", "recklessly", "cautiously", "safely", "timidly", "quickly", "carelessly", "gently", "heavily", "immediately", "effortlessly", "harshly", "steadily", "subtly", "safely", "foolishly", "occasionally", "constantly"
@@ -21,35 +21,75 @@ def password(password_type):
 
     return generated_password
 
+def PIN():
+   amount = int(input("Enter length of pin: "))
+   nums = [str(i) for i in range(amount)]  # Convert to strings
+   random.shuffle(nums)
 
-    
+   pincode = ''.join(nums[:amount])  # This now works
 
-password_type = input("What sort of password do you require? (Alphanumeric, PIN, Random, Passphrase or Long): ")
-generated_password = password(password_type)
+   return pincode
+
+def random():
+  chars = string.digits + string.ascii_letters + string.punctuation
+
+  for i in range(10):
+    print((chars))
+
+  
 
 
 
+def coolprintthing():
+  pause = 0.005
+  target_password = generated_password
 
 
+  char_set = string.ascii_lowercase + string.digits + string.punctuation
+  sleeptime = 0.0025
 
-target = generated_password
+  if password_type == "pin":
+     char_set = string.digits
+     sleeptime = 0.1
 
-char_set = string.ascii_lowercase + string.digits + string.punctuation
 
-guessed_password = ''
+  guessed_password = ''
 
-for i in range(len(target)):
+  for i in range(len(target_password)):
     while True:
       guessed_password = guessed_password[:i] + random.choice(char_set)
 
       print(f"    GENERATING...  {guessed_password}", end = "\r" )
 
-      time.sleep(0.005)
+      time.sleep(sleeptime)
 
-      if guessed_password == target[:i + 1]:
+      if guessed_password == target_password[:i + 1]:
          break
 
-print(f"Successful creation! {guessed_password} is your {password_type} password!")
+  print(f"Successful generation! \033[1m{guessed_password}\033[0m is your {password_type} password!")
+
+
+password_type = input("What sort of password do you require? (Alphanumerical, PIN, Random, Passphrase or Long): ")
+
+if password_type == "alphanumerical":
+  generated_password = Alphanumerical()
+
+elif password_type == "pin":
+  generated_password = PIN()
+
+elif password_type == "random":
+  generated_password = random()
+
+coolprintthing()
+
+
+
+
+
+
+
+
+
 
   
 
