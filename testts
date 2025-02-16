@@ -1,0 +1,32 @@
+import random,time,string
+
+
+generated_password = "test"
+
+
+def coolprintthing():
+  target_password = generated_password
+
+
+  char_set = string.ascii_letters + string.digits + string.punctuation
+  sleeptime = 0.0025
+
+  guessed_password = " "
+
+  for i in range(len(target_password)):
+    while True:
+      guessed_password = guessed_password[:i] + random.choice(char_set)
+
+      print(f"    GENERATING...  {guessed_password}", end = "\r" )
+      random_char = random.choice(char_set)
+
+
+      time.sleep(sleeptime)
+
+      if random_char == target_password[i]:
+                guessed_password += random_char
+                break 
+
+  print(f"Successful generation! \033[1m{guessed_password}\033[0m is your password!")
+
+coolprintthing()

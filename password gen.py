@@ -30,46 +30,65 @@ def PIN():
 
    return pincode
 
-def random():
-  chars = string.digits + string.ascii_letters + string.punctuation
+def random_pass():
+  amount = int(input("Enter length of password: "))
+  chars = "0123456789!@#$%&*()QWERTYUIOPLKJHGFDSAZXCVBNMqwertyuioplkjhgfdsazxcvbnm"
+  password = ""
 
-  for i in range(10):
-    
+  for i in range(amount):
+    password += "".join(random.choice(chars))
+  
+  return(f"{password} \r")
+
+
 
   
+    
+    
+  
+    
 
-
+ 
 
 def coolprintthing():
-  pause = 0.005
   target_password = generated_password
 
 
-  char_set = string.ascii_lowercase + string.digits + string.punctuation
+  char_set = string.ascii_letters + string.digits + string.punctuation
   sleeptime = 0.0025
 
   if password_type == "pin":
      char_set = string.digits
      sleeptime = 0.1
 
+  if password_type == "random":
+     sleeptime = 0.0005
+     char_set = string.ascii_letters + string.punctuation + string.digits
 
-  guessed_password = ''
+  guessed_password = " "
 
   for i in range(len(target_password)):
     while True:
       guessed_password = guessed_password[:i] + random.choice(char_set)
 
       print(f"    GENERATING...  {guessed_password}", end = "\r" )
+      random_char = random.choice(char_set)
+
 
       time.sleep(sleeptime)
 
-      if guessed_password == target_password[:i + 1]:
-         break
+      if random_char == target_password[i+1]:
+                guessed_password += random_char
+                break 
 
   print(f"Successful generation! \033[1m{guessed_password}\033[0m is your {password_type} password!")
 
 
 password_type = input("What sort of password do you require? (Alphanumerical, PIN, Random, Passphrase or Long): ")
+
+if password_type not in ["alphanumerical", "pin", "PIN", "random", "passphrase", "long"]:
+  print("Error, invalid password type!")
+  exit()
 
 if password_type == "alphanumerical":
   generated_password = Alphanumerical()
@@ -78,7 +97,8 @@ elif password_type == "pin":
   generated_password = PIN()
 
 elif password_type == "random":
-  generated_password = random()
+  random_pass()
+  generated_password = random_pass()
 
 coolprintthing()
 

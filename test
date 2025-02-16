@@ -1,0 +1,14 @@
+import random,time
+
+passcorr = "123"
+
+amount = int(input("Enter length: "))
+
+while True:
+    guess = "".join([random.choice('0123456789') for i in range(amount)])
+
+    print(guess)
+
+    if guess == passcorr:
+        print("Password guessed!")
+        exit()
